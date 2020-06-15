@@ -1,5 +1,7 @@
 const express = require('express');
 const next = require('next');
+const nextI18NextMiddleware = require('next-i18next/middleware').default
+const nextI18next = require('./i18n')
 const path = require('path');
 const url = require('url');
 const cluster = require('cluster');
@@ -17,6 +19,9 @@ if (!dev && cluster.isMaster) {
   const nextHandler = nextApp.getRequestHandler();
   nextApp.prepare().then(() => {
       const server = express();
+      nextI18next.initPromise
+      server.use(nextI18NextMiddleware(nextI18next))
+
       if (!dev) {
         server.use(function(req, res, next) {
           var proto = req.headers["x-forwarded-proto"];

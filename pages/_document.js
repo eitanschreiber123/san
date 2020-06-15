@@ -1,6 +1,12 @@
 import Document, { Head, Main, NextScript } from 'next/document'
 import { ServerStyleSheet, createGlobalStyle } from 'styled-components'
-const GlobalStyle = createGlobalStyle`body {width: 100%;margin: 0;padding-top: 48px;}`
+const GlobalStyle = createGlobalStyle`
+  body {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }`
 export default class SiteDocument extends Document {
   render () {
     const sheet = new ServerStyleSheet()
@@ -16,6 +22,7 @@ export default class SiteDocument extends Document {
           <link rel='stylesheet' type='text/css' href='https://cdnjs.cloudflare.com/ajax/libs/tachyons/4.7.4/tachyons.min.css' />
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.3.1/leaflet.css" />
           <link href="https://unpkg.com/leaflet-geosearch@latest/assets/css/leaflet.css" rel="stylesheet" />
+          <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
           {styleTags}
         </Head>
         <>
